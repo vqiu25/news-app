@@ -9,7 +9,7 @@ function Home() {
     <View>
       <View style={styles.headerRow}>
         <Text style={styles.appName}>News</Text>
-        <Ionicons name="notifications-outline" size={24} color="black" />
+        <Ionicons name="notifications" size={24} color="black" />
       </View>
       <CategorySlider />
     </View>
