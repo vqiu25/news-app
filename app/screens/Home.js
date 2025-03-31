@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 import CategorySlider from "../components/home/CategorySlider";
 import Colour from "../shared/Colour";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import TopHeadlineSlider from "../components/home/TopHeadlineSlider";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
         <Ionicons name="notifications" size={24} color="black" />
       </View>
       <CategorySlider />
+      <TopHeadlineSlider />
     </View>
   );
 }
