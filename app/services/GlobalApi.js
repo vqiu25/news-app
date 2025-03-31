@@ -4,9 +4,9 @@ const api = axios.create({
   baseURL: "https://newsapi.org/v2",
 });
 
-const apiKey = "612917e7a65447e8916c9b0157cee35c";
+const apiKey = "";
 
-const getTopHeadlines = (country = "us") =>
+const getTopHeadline = (country = "us") =>
   api.get("/top-headlines", {
     params: {
       country,
@@ -14,4 +14,8 @@ const getTopHeadlines = (country = "us") =>
     },
   });
 
-export default getTopHeadlines;
+const GlobalApi = {
+  getTopHeadline,
+};
+
+export default GlobalApi;
