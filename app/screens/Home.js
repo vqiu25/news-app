@@ -1,5 +1,11 @@
 import { React, useState, useEffect } from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
 import CategorySlider from "../components/home/CategorySlider";
 import Colour from "../shared/Colour";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -9,19 +15,24 @@ import GlobalApi from "../services/GlobalApi";
 
 function Home() {
   const [newsList, setNewsList] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getNewsByCategory("latest");
   }, []);
 
   const getNewsByCategory = async (category) => {
     try {
+      setLoading(true);
       const result = (await GlobalApi.getByCategory(category)).data;
-      console.log(result);
+      // console.log(result);
       setNewsList(result.articles);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching news by category:", error);
+      setLoading(false);
     }
   };
+
   const getTopHeadline = async () => {
     try {
       const result = (await GlobalApi.getTopHeadline()).data;
@@ -33,7 +44,10 @@ function Home() {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} backgroundColor="white">
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{ backgroundColor: "white" }}
+    >
       <View style={styles.paddingContainer}>
         <View style={styles.headerRow}>
           <Text style={styles.appName}>News</Text>
@@ -42,8 +56,17 @@ function Home() {
         <CategorySlider
           selectCategory={(category) => getNewsByCategory(category)}
         />
-        <TopHeadlineSlider newsList={newsList} />
-        <HeadlineList newsList={newsList} />
+
+        {loading ? (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color={Colour.primary} />
+          </View>
+        ) : (
+          <>
+            <TopHeadlineSlider newsList={newsList} />
+            <HeadlineList newsList={newsList} />
+          </>
+        )}
       </View>
     </ScrollView>
   );
@@ -64,6 +87,12 @@ const styles = StyleSheet.create({
   paddingContainer: {
     paddingHorizontal: 20,
     paddingTop: 20,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    height: 400, // or use Dimensions.get("window").height if you want full screen
   },
 });
 
