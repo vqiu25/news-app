@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -11,8 +11,17 @@ import GlobalApi from "../../services/GlobalApi";
 import Colour from "../../shared/Colour";
 import { useNavigation } from "@react-navigation/native";
 
+/**
+ * Displays a horizontally scrollable slider of the top four news headlines.
+ * Each item is clickable and navigates to a detailed news screen.
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.newsList - List of top headline news articles.
+ * @returns {JSX.Element} Horizontal scrollable slider of top news cards.
+ */
 function TopHeadlineSlider({ newsList }) {
   const navigation = useNavigation();
+
   return (
     <View style={{ marginTop: 15 }}>
       <FlatList

@@ -1,3 +1,6 @@
+/**
+ * Shared color palette used across the app.
+ */
 export default {
   primary: "#bb9af7",
   grey: "#424242",

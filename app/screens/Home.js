@@ -12,6 +12,12 @@ import TopHeadlineSlider from "../components/home/TopHeadlineSlider";
 import HeadlineList from "../components/home/HeadlineList";
 import GlobalApi from "../services/GlobalApi";
 
+/**
+ * Home screen displaying categorized news with top headlines and a full list.
+ * Fetches and updates news based on selected category.
+ *
+ * @returns {JSX.Element} Main news display UI.
+ */
 function Home() {
   const [topHeadlines, setTopHeadlines] = useState([]);
   const [remainingNews, setRemainingNews] = useState([]);
@@ -21,6 +27,11 @@ function Home() {
     getNewsByCategory("latest");
   }, []);
 
+  /**
+   * Fetches news by category and updates state with top headlines and others.
+   *
+   * @param {string} category - The news category to fetch.
+   */
   const getNewsByCategory = async (category) => {
     try {
       setLoading(true);
@@ -82,7 +93,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    height: 400, // or use Dimensions.get("window").height if you want full screen
+    height: 400,
   },
 });
 

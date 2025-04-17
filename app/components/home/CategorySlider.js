@@ -8,8 +8,16 @@ import {
 } from "react-native";
 import Colour from "../../shared/Colour";
 
+/**
+ * A horizontal slider for selecting a news category.
+ *
+ * @param {Object} props
+ * @param {function(string): void} props.selectCategory - Callback triggered when a category is selected.
+ * @returns {JSX.Element} Category selection slider UI.
+ */
 function CategorySlider({ selectCategory }) {
   const [active, setActive] = useState(1);
+
   const categoryList = [
     { id: 1, name: "Latest" },
     { id: 2, name: "World" },
@@ -17,6 +25,10 @@ function CategorySlider({ selectCategory }) {
     { id: 4, name: "Sports" },
   ];
 
+  /**
+   * Handles when a category is clicked.
+   * @param {number} id - ID of the selected category.
+   */
   const onCategoryClick = (id) => {
     setActive(id);
   };
@@ -36,7 +48,7 @@ function CategorySlider({ selectCategory }) {
           >
             <Text
               style={
-                item.id == active ? styles.selectText : styles.unselectText
+                item.id === active ? styles.selectText : styles.unselectText
               }
             >
               {item.name}
@@ -59,7 +71,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     fontSize: 17,
     fontWeight: "800",
-    color: Colour.primary,
+    color: Colour.primary, // Highlight selected category
   },
 });
 

@@ -3,11 +3,20 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import Colour from "../../shared/Colour";
 import { useNavigation } from "@react-navigation/native";
 
+/**
+ * Displays a vertical list of news headlines.
+ * Each item is clickable and navigates to a detailed news screen.
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.newsList - Array of news article objects to display.
+ * @returns {JSX.Element} A list of headline cards.
+ */
 function HeadlineList({ newsList }) {
   const navigation = useNavigation();
 
   return (
     <View>
+      {/* Divider */}
       <View
         style={{
           height: 1,
