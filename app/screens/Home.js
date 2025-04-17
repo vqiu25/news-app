@@ -8,14 +8,15 @@ import {
 } from "react-native";
 import CategorySlider from "../components/home/CategorySlider";
 import Colour from "../shared/Colour";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import TopHeadlineSlider from "../components/home/TopHeadlineSlider";
 import HeadlineList from "../components/home/HeadlineList";
 import GlobalApi from "../services/GlobalApi";
 
 function Home() {
-  const [newsList, setNewsList] = useState([]);
+  const [topHeadlines, setTopHeadlines] = useState([]);
+  const [remainingNews, setRemainingNews] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getNewsByCategory("latest");
   }, []);
@@ -24,22 +25,13 @@ function Home() {
     try {
       setLoading(true);
       const result = (await GlobalApi.getByCategory(category)).data;
-      // console.log(result);
-      setNewsList(result.articles);
+      const articles = result.articles;
+      setTopHeadlines(articles.slice(0, 4));
+      setRemainingNews(articles.slice(4));
       setLoading(false);
     } catch (error) {
       console.error("Error fetching news by category:", error);
       setLoading(false);
-    }
-  };
-
-  const getTopHeadline = async () => {
-    try {
-      const result = (await GlobalApi.getTopHeadline()).data;
-      console.log(result);
-      setNewsList(result.articles);
-    } catch (error) {
-      console.error("Error fetching top headlines:", error);
     }
   };
 
@@ -51,11 +43,9 @@ function Home() {
       <View style={styles.paddingContainer}>
         <View style={styles.headerRow}>
           <Text style={styles.appName}>News</Text>
-          <Ionicons name="notifications" size={24} color="black" />
         </View>
-        <CategorySlider
-          selectCategory={(category) => getNewsByCategory(category)}
-        />
+
+        <CategorySlider selectCategory={getNewsByCategory} />
 
         {loading ? (
           <View style={styles.loadingContainer}>
@@ -63,8 +53,8 @@ function Home() {
           </View>
         ) : (
           <>
-            <TopHeadlineSlider newsList={newsList} />
-            <HeadlineList newsList={newsList} />
+            <TopHeadlineSlider newsList={topHeadlines} />
+            <HeadlineList newsList={remainingNews} />
           </>
         )}
       </View>
