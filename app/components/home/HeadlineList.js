@@ -1,8 +1,11 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import Colour from "../../shared/Colour";
+import { useNavigation } from "@react-navigation/native";
 
 function HeadlineList({ newsList }) {
+  const navigation = useNavigation();
+
   return (
     <View>
       <View
@@ -15,6 +18,7 @@ function HeadlineList({ newsList }) {
       {newsList.map((item, index) => (
         <TouchableOpacity
           key={index}
+          onPress={() => navigation.navigate("News", { news: item })}
           style={{
             marginTop: 15,
             display: "flex",
