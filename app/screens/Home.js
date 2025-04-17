@@ -1,20 +1,40 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { React, useState, useEffect } from "react";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import CategorySlider from "../components/home/CategorySlider";
 import Colour from "../shared/Colour";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import TopHeadlineSlider from "../components/home/TopHeadlineSlider";
+import HeadlineList from "../components/home/HeadlineList";
+import GlobalApi from "../services/GlobalApi";
 
 function Home() {
+  const [newsList, setNewsList] = useState([]);
+  useEffect(() => {
+    getTopHeadline();
+  }, []);
+
+  const getTopHeadline = async () => {
+    try {
+      const result = (await GlobalApi.getTopHeadline()).data;
+      console.log(result);
+      setNewsList(result.articles);
+    } catch (error) {
+      console.error("Error fetching top headlines:", error);
+    }
+  };
+
   return (
-    <View>
-      <View style={styles.headerRow}>
-        <Text style={styles.appName}>News</Text>
-        <Ionicons name="notifications" size={24} color="black" />
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View>
+        <View style={styles.headerRow}>
+          <Text style={styles.appName}>News</Text>
+          <Ionicons name="notifications" size={24} color="black" />
+        </View>
+        <CategorySlider />
+        <TopHeadlineSlider newsList={newsList} />
+        <HeadlineList newsList={newsList} />
       </View>
-      <CategorySlider />
-      <TopHeadlineSlider />
-    </View>
+    </ScrollView>
   );
 }
 

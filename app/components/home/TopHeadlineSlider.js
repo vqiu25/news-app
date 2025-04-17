@@ -10,22 +10,7 @@ import {
 import GlobalApi from "../../services/GlobalApi";
 import Colour from "../../shared/Colour";
 
-function TopHeadlineSlider() {
-  const [newsList, setNewsList] = useState([]);
-  useEffect(() => {
-    getTopHeadline();
-  }, []);
-
-  const getTopHeadline = async () => {
-    try {
-      const result = (await GlobalApi.getTopHeadline()).data;
-      console.log(result);
-      setNewsList(result.articles);
-    } catch (error) {
-      console.error("Error fetching top headlines:", error);
-    }
-  };
-
+function TopHeadlineSlider({ newsList }) {
   return (
     <View style={{ marginTop: 15 }}>
       <FlatList
