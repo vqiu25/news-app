@@ -1,5 +1,5 @@
 /**
- * Shared color palette used across the app.
+ * Shared colour palette used across the app.
  */
 export default {
   primary: "#bb9af7",
