@@ -4,6 +4,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import Colour from "../shared/Colour";
 import { Ionicons } from "@expo/vector-icons";
 import { Share } from "react-native";
+import * as WebBrowser from "expo-web-browser";
 
 function News() {
   const news = useRoute().params.news;
@@ -49,16 +50,18 @@ function News() {
       <Text style={{ marginTop: 10, fontSize: 18, color: Colour.grey }}>
         {news.description}
       </Text>
-      <Text
-        style={{
-          marginTop: 10,
-          fontSize: 18,
-          color: Colour.primary,
-          fontWeight: "bold",
-        }}
-      >
-        Read More
-      </Text>
+      <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(news.url)}>
+        <Text
+          style={{
+            marginTop: 10,
+            fontSize: 18,
+            color: Colour.primary,
+            fontWeight: "bold",
+          }}
+        >
+          Read More
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
