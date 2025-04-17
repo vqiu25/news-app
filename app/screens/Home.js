@@ -39,7 +39,9 @@ function Home() {
           <Text style={styles.appName}>News</Text>
           <Ionicons name="notifications" size={24} color="black" />
         </View>
-        <CategorySlider />
+        <CategorySlider
+          selectCategory={(category) => getNewsByCategory(category)}
+        />
         <TopHeadlineSlider newsList={newsList} />
         <HeadlineList newsList={newsList} />
       </View>
