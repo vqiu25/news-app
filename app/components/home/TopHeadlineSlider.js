@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
   Dimensions,
+  StyleSheet,
 } from "react-native";
 import GlobalApi from "../../services/GlobalApi";
 import Colour from "../../shared/Colour";
@@ -21,44 +22,53 @@ import { useNavigation } from "@react-navigation/native";
  */
 function TopHeadlineSlider({ newsList }) {
   const navigation = useNavigation();
+  const screenWidth = Dimensions.get("screen").width;
 
   return (
-    <View style={{ marginTop: 15 }}>
+    <View style={styles.container}>
       <FlatList
         data={newsList}
-        horizontal={true}
+        horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("News", { news: item });
-            }}
-            style={{
-              width: Dimensions.get("screen").width * 0.8,
-              marginRight: 15,
-            }}
+            onPress={() => navigation.navigate("News", { news: item })}
+            style={[styles.card, { width: screenWidth * 0.8 }]}
           >
             <Image
               source={{ uri: item.urlToImage }}
-              style={{
-                height: Dimensions.get("screen").width * 0.7,
-                borderRadius: 10,
-              }}
+              style={[styles.image, { height: screenWidth * 0.7 }]}
             />
-            <Text
-              numberOfLines={3}
-              style={{ marginTop: 10, fontSize: 20, fontWeight: "bold" }}
-            >
+            <Text numberOfLines={3} style={styles.title}>
               {item.title}
             </Text>
-            <Text style={{ marginTop: 5, color: Colour.primary }}>
-              {item?.source?.name}
-            </Text>
+            <Text style={styles.source}>{item?.source?.name}</Text>
           </TouchableOpacity>
         )}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 15,
+  },
+  card: {
+    marginRight: 15,
+  },
+  image: {
+    borderRadius: 10,
+  },
+  title: {
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  source: {
+    marginTop: 5,
+    color: Colour.primary,
+  },
+});
 
 export default TopHeadlineSlider;
