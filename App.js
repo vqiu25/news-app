@@ -6,14 +6,15 @@ import {
   Text,
   View,
 } from "react-native";
-import Home from "./app/screens/Home";
+import { NavigationContainer } from "@react-navigation/native";
+import HomeNavigator from "./app/navigation/HomeNavigator";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.paddingContainer}>
-        <Home />
-      </View>
+      <NavigationContainer>
+        <HomeNavigator />
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
@@ -23,8 +24,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 20 : 20,
-  },
-  paddingContainer: {
-    padding: 20,
   },
 });

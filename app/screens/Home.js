@@ -24,8 +24,8 @@ function Home() {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View>
+    <ScrollView showsVerticalScrollIndicator={false} backgroundColor="white">
+      <View style={styles.paddingContainer}>
         <View style={styles.headerRow}>
           <Text style={styles.appName}>News</Text>
           <Ionicons name="notifications" size={24} color="black" />
@@ -49,6 +49,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  paddingContainer: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
 });
 

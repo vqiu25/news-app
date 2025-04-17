@@ -9,8 +9,10 @@ import {
 } from "react-native";
 import GlobalApi from "../../services/GlobalApi";
 import Colour from "../../shared/Colour";
+import { useNavigation } from "@react-navigation/native";
 
 function TopHeadlineSlider({ newsList }) {
+  const navigation = useNavigation();
   return (
     <View style={{ marginTop: 15 }}>
       <FlatList
@@ -19,6 +21,9 @@ function TopHeadlineSlider({ newsList }) {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("News", { news: item });
+            }}
             style={{
               width: Dimensions.get("screen").width * 0.8,
               marginRight: 15,
