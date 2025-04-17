@@ -34,7 +34,7 @@ function CategorySlider({ selectCategory }) {
   };
 
   return (
-    <View style={{ marginTop: 10 }}>
+    <View style={styles.container}>
       <FlatList
         data={categoryList}
         horizontal={true}
@@ -61,6 +61,9 @@ function CategorySlider({ selectCategory }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+  },
   unselectText: {
     marginRight: 10,
     fontSize: 17,
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     fontSize: 17,
     fontWeight: "800",
-    color: Colour.primary, // Highlight selected category
+    color: Colour.primary,
   },
 });
 

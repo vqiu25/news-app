@@ -8,7 +8,6 @@ import {
   Dimensions,
   StyleSheet,
 } from "react-native";
-import GlobalApi from "../../services/GlobalApi";
 import Colour from "../../shared/Colour";
 import { useNavigation } from "@react-navigation/native";
 
@@ -24,6 +23,8 @@ function TopHeadlineSlider({ newsList }) {
   const navigation = useNavigation();
   const screenWidth = Dimensions.get("screen").width;
 
+  const styles = getStyles(screenWidth);
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -33,12 +34,9 @@ function TopHeadlineSlider({ newsList }) {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => navigation.navigate("News", { news: item })}
-            style={[styles.card, { width: screenWidth * 0.8 }]}
+            style={styles.card}
           >
-            <Image
-              source={{ uri: item.urlToImage }}
-              style={[styles.image, { height: screenWidth * 0.7 }]}
-            />
+            <Image source={{ uri: item.urlToImage }} style={styles.image} />
             <Text numberOfLines={3} style={styles.title}>
               {item.title}
             </Text>
@@ -50,25 +48,28 @@ function TopHeadlineSlider({ newsList }) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 15,
-  },
-  card: {
-    marginRight: 15,
-  },
-  image: {
-    borderRadius: 10,
-  },
-  title: {
-    marginTop: 10,
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  source: {
-    marginTop: 5,
-    color: Colour.primary,
-  },
-});
+const getStyles = (screenWidth) =>
+  StyleSheet.create({
+    container: {
+      marginTop: 15,
+    },
+    card: {
+      marginRight: 15,
+      width: screenWidth * 0.8,
+    },
+    image: {
+      height: screenWidth * 0.7,
+      borderRadius: 10,
+    },
+    title: {
+      marginTop: 10,
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+    source: {
+      marginTop: 5,
+      color: Colour.primary,
+    },
+  });
 
 export default TopHeadlineSlider;

@@ -13,7 +13,7 @@ import HeadlineList from "../components/home/HeadlineList";
 import GlobalApi from "../services/GlobalApi";
 
 /**
- * Home screen displaying categorized news with top headlines and a full list.
+ * Home screen displaying categorised news with top headlines and a full list.
  * Fetches and updates news based on selected category.
  *
  * @returns {JSX.Element} Main news display UI.
