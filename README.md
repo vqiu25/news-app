@@ -1,7 +1,7 @@
 # News App
 
 <p align="center">
-  <img width="350" alt="news-logo" src="https://github.com/user-attachments/assets/68e141ea-093d-407a-bc19-a80084dc89f1">
+  <img width="250" alt="news-logo" src="https://github.com/user-attachments/assets/68e141ea-093d-407a-bc19-a80084dc89f1">
 </p>
 
 ## About
@@ -58,5 +58,5 @@ A QR code will now appear in the terminal. Scan it, and it will redirect you to 
 The QR code should look something like this. Do **not** use the following QR code as you must generate a new one each time.
 
 <p align="center">
-  <img width="350" alt="news-logo" src="https://github.com/user-attachments/assets/234711de-99de-46db-bb84-0d12da25fea9">
+  <img width="550" alt="news-logo" src="https://github.com/user-attachments/assets/234711de-99de-46db-bb84-0d12da25fea9">
 </p>
