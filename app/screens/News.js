@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import {
   View,
@@ -22,10 +22,6 @@ import * as WebBrowser from "expo-web-browser";
 function News() {
   const news = useRoute().params.news;
   const navigation = useNavigation();
-
-  useEffect(() => {
-    console.log(news);
-  });
 
   /**
    * Shares the news article using the native share dialog.
