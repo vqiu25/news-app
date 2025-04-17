@@ -14,8 +14,17 @@ const getTopHeadline = (country = "us") =>
     },
   });
 
+const getByCategory = (category) =>
+  api.get("/everything", {
+    params: {
+      q: category,
+      apiKey,
+    },
+  });
+
 const GlobalApi = {
   getTopHeadline,
+  getByCategory,
 };
 
 export default GlobalApi;

@@ -10,9 +10,18 @@ import GlobalApi from "../services/GlobalApi";
 function Home() {
   const [newsList, setNewsList] = useState([]);
   useEffect(() => {
-    getTopHeadline();
+    getNewsByCategory("latest");
   }, []);
 
+  const getNewsByCategory = async (category) => {
+    try {
+      const result = (await GlobalApi.getByCategory(category)).data;
+      console.log(result);
+      setNewsList(result.articles);
+    } catch (error) {
+      console.error("Error fetching news by category:", error);
+    }
+  };
   const getTopHeadline = async () => {
     try {
       const result = (await GlobalApi.getTopHeadline()).data;

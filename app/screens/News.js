@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import Colour from "../shared/Colour";
 import { Ionicons } from "@expo/vector-icons";
 import { Share } from "react-native";
@@ -20,7 +20,10 @@ function News() {
   };
 
   return (
-    <View style={{ backgroundColor: "white", flex: 1, paddingHorizontal: 20 }}>
+    <ScrollView
+      style={{ backgroundColor: "white", flex: 1, paddingHorizontal: 20 }}
+      showsVerticalScrollIndicator={false}
+    >
       <View
         style={{
           marginTop: 10,
@@ -62,7 +65,7 @@ function News() {
           Read More
         </Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 export default News;
