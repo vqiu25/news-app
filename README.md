@@ -37,7 +37,7 @@ cd <project-folder>
 
 ### **Step Two:** `npm install`
 
-In the root directory, install our dependencies by performing the following:
+In the root directory, install our dependencies (React Native) by performing the following:
 
 ```
 npm install
@@ -50,6 +50,7 @@ Now perform:
 ```
 npx expo start
 ```
+Which will start up the development server.
 
 ### **Step Four:** Scan the QR Code
 
