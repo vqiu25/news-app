@@ -68,7 +68,7 @@ The QR code should look something like this. Do **not** use the following QR cod
 
 This project was set up using the blank template option in [Expo](https://expo.dev/). Expo is an open-source platform that simplifies the development of React Native apps by providing a managed workflow with built-in tooling, over-the-air updates, and easy deployment.
 
-To setup a brand new Expo project, you can do so by performing the following:
+You do **not** need to perform the following, however if you're interested in setting up your own Expo project, you can do so by performing the following:
 
 ```
 npx create-expo-app my-app --template blank
