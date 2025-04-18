@@ -26,11 +26,13 @@ https://github.com/user-attachments/assets/7742b586-d677-4c09-ac9a-b150ed03088b
 ### **Step Zero:** Download Expo Go
 
 Expo Go is where our app will be rendered. You can find the IOS and Android versions [here](https://expo.dev/go). 
+If you don't have Node.js or Git installed, please install these as well.
 
 ### **Step One:** Clone the Repository
 
 ```
 git clone <URL>
+cd <project-folder>
 ```
 
 ### **Step Two:** `npm install`
