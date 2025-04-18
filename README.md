@@ -37,7 +37,7 @@ cd <project-folder>
 
 ### **Step Two:** `npm install`
 
-In the root directory, perform the following:
+In the root directory, install our dependencies by performing the following:
 
 ```
 npm install
@@ -62,3 +62,22 @@ The QR code should look something like this. Do **not** use the following QR cod
 <p align="center">
   <img width="550" alt="news-logo" src="https://github.com/user-attachments/assets/234711de-99de-46db-bb84-0d12da25fea9">
 </p>
+
+## How the Project was Setup
+
+This project was set up using the blank template option in [Expo](https://expo.dev/). Expo is an open-source platform that simplifies the development of React Native apps by providing a managed workflow with built-in tooling, over-the-air updates, and easy deployment.
+
+To setup a brand new Expo project, you can do so by performing the following:
+
+```
+npx create-expo-app my-app --template blank
+cd my-app
+npm install
+npx expo start
+```
+
+This will launch the Expo development server. You can then scan the QR code using the Expo Go app on your mobile device to preview the app instantly. This also means you won't have to manually install React Native, avoiding the need to perform:
+
+```
+npm install react-native
+```
