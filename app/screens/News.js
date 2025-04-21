@@ -32,21 +32,28 @@ function News() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      {/* Top bar with back and share buttons */}
       <View style={styles.topBar}>
+        {/* Navigate back to previous screen */}
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back-circle" size={32} color={Colour.primary} />
         </TouchableOpacity>
+
+        {/* Trigger share screen */}
         <TouchableOpacity onPress={shareNews}>
           <Ionicons name="share" size={32} color={Colour.primary} />
         </TouchableOpacity>
       </View>
 
+      {/* News thumbnail image */}
       <Image source={{ uri: news.urlToImage }} style={styles.image} />
 
+      {/* News title, source, and description */}
       <Text style={styles.title}>{news.title}</Text>
       <Text style={styles.source}>{news.source.name}</Text>
       <Text style={styles.description}>{news.description}</Text>
 
+      {/* Button to open the full article in the device's web browser */}
       <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(news.url)}>
         <Text style={styles.readMore}>Read More</Text>
       </TouchableOpacity>

@@ -56,15 +56,19 @@ function Home() {
           <Text style={styles.appName}>News</Text>
         </View>
 
+        {/* Horizontal category selector that triggers news fetch on selection */}
         <CategorySlider selectCategory={getNewsByCategory} />
 
+        {/* Main content: shows loading spinner or the fetched news */}
         {loading ? (
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color={Colour.primary} />
           </View>
         ) : (
           <>
+            {/* Slider for top 4 headlines */}
             <TopHeadlineSlider newsList={topHeadlines} />
+            {/* List of remaining news articles */}
             <HeadlineList newsList={remainingNews} />
           </>
         )}

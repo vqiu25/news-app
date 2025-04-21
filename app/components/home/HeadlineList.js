@@ -16,14 +16,24 @@ function HeadlineList({ newsList }) {
 
   return (
     <View>
+      {/* Divider line to separate top headlines from remaining list */}
       <View style={styles.divider} />
+
+      {/* 
+        Render vertical list of news items. 
+        Each card displays a thumbnail, title, and source name.
+        Navigates to the "News" screen with the full article when pressed.
+      */}
       {newsList.map((item, index) => (
         <TouchableOpacity
           key={index}
           onPress={() => navigation.navigate("News", { news: item })}
           style={styles.card}
         >
+          {/* Thumbnail image for the article */}
           <Image source={{ uri: item.urlToImage }} style={styles.image} />
+
+          {/* News title and source*/}
           <View style={styles.textContainer}>
             <Text numberOfLines={4} style={styles.title}>
               {item.title}

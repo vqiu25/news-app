@@ -35,6 +35,11 @@ function CategorySlider({ selectCategory }) {
 
   return (
     <View style={styles.container}>
+      {/* 
+        Horizontal list of category options.
+        Maps through `categoryList` and renders each as a touchable item.
+        Highlights the active category and calls `selectCategory` when tapped.
+      */}
       <FlatList
         data={categoryList}
         horizontal={true}

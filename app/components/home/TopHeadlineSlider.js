@@ -27,6 +27,10 @@ function TopHeadlineSlider({ newsList }) {
 
   return (
     <View style={styles.container}>
+      {/* 
+        Horizontally scrollable list of top news headlines.
+        Each card includes an image, title, and source, and navigates to the News screen on press.
+      */}
       <FlatList
         data={newsList}
         horizontal
@@ -36,7 +40,10 @@ function TopHeadlineSlider({ newsList }) {
             onPress={() => navigation.navigate("News", { news: item })}
             style={styles.card}
           >
+            {/* News thumbnail image */}
             <Image source={{ uri: item.urlToImage }} style={styles.image} />
+
+            {/* News title and source*/}
             <Text numberOfLines={3} style={styles.title}>
               {item.title}
             </Text>
