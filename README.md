@@ -21,6 +21,10 @@ This app is a React Native implementation of a News App. It is a tech demo for t
 
 https://github.com/user-attachments/assets/7742b586-d677-4c09-ac9a-b150ed03088b
 
+## React Native Video Explanation
+
+https://github.com/user-attachments/assets/68bb6ae3-9abb-4f57-8a55-4ffb9ff01686
+
 ## How to Run
 
 ### **Step Zero:** Download Expo Go
